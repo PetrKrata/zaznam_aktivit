@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tréninkový deník</title>
+    <link rel="stylesheet" href="styles.css">
+  
 </head>
 <body>
     <header>
@@ -63,6 +65,13 @@
         <section>
             <h2>Celkový čas podle cvičení</h2>
             <canvas id="workoutChart" width="400" height="200"></canvas>
+        </section>
+
+        <section>
+            <div class="actions">
+                <button id="exportJson">Export do JSON</button>
+                <button id="importJson">Import JSON</button>
+            </div>
         </section>
     </main>
     <footer>
