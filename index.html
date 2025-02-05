@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tréninkový deník</title>
+</head>
+<body>
+    <header>
+        <h1>Tréninkový deník</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Přidat nový trénink</h2>
+            <form id="workoutForm" class="form-container">
+                <label for="date">Datum:</label>
+                <input type="date" id="date" required>
+
+                <label for="time">Začátek cvičení (hodiny, minuty):</label>
+                <input type="time" id="time" required>
+
+                <label for="duration">Trvání (minuty):</label>
+                <input type="number" id="duration" min="1" required>
+
+                <label for="exercise">Cvičení:</label>
+                <select id="exercise">
+                    <option value="Chůze">Chůze</option>
+                    <option value="Běh">Běh</option>
+                    <option value="Kolo">Kolo</option>
+                    <option value="Posilování">Posilování</option>
+                </select>
+                <button type="submit">Vložit cvičení</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Filteruj podle měsíce</h2>
+            <label for="monthFilter">Vyber měsíc:</label>
+            <input type="month" id="monthFilter">
+            <button id="applyFilter">Filtruj</button>
+        </section>
+
+        <section>
+            <h2>Historie cvičení</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Výběr</th>
+                        <th>Datum</th>
+                        <th>Čas</th>
+                        <th>Trvání (minuty)</th>
+                        <th>Cvičení</th>
+                    </tr>
+                </thead>
+                <tbody id="history"></tbody>
+            </table>
+            <div class="actions">
+                <button id="editSelected">Editovat záznam</button>
+                <button id="deleteSelected">Vymazat záznam</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Celkový čas podle cvičení</h2>
+            <canvas id="workoutChart" width="400" height="200"></canvas>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Tréninkový deník 2024</p>
+    </footer>
+
+</body>
+</html>
