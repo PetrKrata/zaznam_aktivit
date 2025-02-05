@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tréninkový deník</title>
     <link rel="stylesheet" href="styles.css">
-  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -78,5 +78,53 @@
         <p>&copy; Tréninkový deník 2024</p>
     </footer>
 
+    <script>
+        class Workout {
+            constructor(date, time, duration, exercise) {
+                this.date = date;
+                this.time = time;
+                this.duration = parseInt(duration, 10);
+                this.exercise = exercise;
+            }
+        }
+
+        class WorkoutManager {
+            constructor() {
+                this.workouts = JSON.parse(localStorage.getItem('workouts')) || [];
+            }
+
+            addWorkout(workout) {
+                this.workouts.push(workout);
+                this.saveToLocalStorage();
+            }
+
+            deleteWorkout(index) {
+                this.workouts.splice(index, 1);
+                this.saveToLocalStorage();
+            }
+
+            saveToLocalStorage() {
+                localStorage.setItem('workouts', JSON.stringify(this.workouts));
+            }
+
+            getWorkouts() {
+                return this.workouts;
+            }
+        }
+
+        const workoutManager = new WorkoutManager();
+        const form = document.getElementById('workoutForm');
+        const historyBody = document.getElementById('history');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const duration = document.getElementById('duration').value;
+            const exercise = document.getElementById('exercise').value;
+            const workout = new Workout(date, time, duration, exercise);
+            workoutManager.addWorkout(workout);
+        });
+    </script>
 </body>
 </html>
